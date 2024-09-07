@@ -8,7 +8,7 @@ Este repositório contém um script Python que automatiza o jogo Charada. O bot 
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://[seu_repositorio]/seu_repositorio.git
+   git clone https://github.com/najort1/CHARADA-BOT.git
    ```
 2. **Instale as dependências:**
    ```bash
