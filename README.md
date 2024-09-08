@@ -1,9 +1,4 @@
 **Bot Charada Automático**
-
-**Descrição:**
-
-Este repositório contém um script Python que automatiza o jogo Charada. O bot utiliza a biblioteca Selenium para interagir com a página web do jogo e um algoritmo simples para sugerir palavras com base nas informações obtidas a cada tentativa.
-
 **Instalação:**
 
 1. **Clone o repositório:**
