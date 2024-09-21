@@ -13,7 +13,6 @@ init(autoreset=True)
 def puxa_dados(original, left, right, capturar_todos=False):
     split_str = original.split(left)[1:]
     result = [s.split(right)[0] for s in split_str]
-
     return result if capturar_todos else result[0] if result else None
 
 def esperar_elemento(browser, selector):
@@ -128,6 +127,26 @@ def main():
                     clicar_jogar_novamente(browser)
                     break
 
+                elif len(dicionario) > 1 and len(dicionario) < 4:
+                    for palavra in dicionario:
+                        print(f"{Fore.YELLOW}Tentando as ultimas: {palavra}")
+                        body = esperar_elemento(browser, 'body')
+                        for letra in palavra:
+                            time.sleep(0.05)
+                            body.send_keys(letra)
+                        body.send_keys(Keys.RETURN)
+                        acertou_ou_nao = html_pagina(browser)
+                        if 'você acertou' in acertou_ou_nao:
+                            print(f"{Fore.GREEN}Parabéns! Você acertou!")
+                        elif 'A palavra era:' in acertou_ou_nao:
+                            resposta_correta = puxa_dados(acertou_ou_nao, 'A palavra era: ', ' ')
+                            print(f"{Fore.RED}A palavra correta era: {resposta_correta}")
+                        else:
+                            continue
+                    time.sleep(0.5)
+                    clicar_jogar_novamente(browser)
+                    break
+                
                 elif len(dicionario) > 1 and linha_atual == 4:
                     palavra_final = dicionario[0]
                     print(f"{Fore.YELLOW}Escolhendo aleatoriamente: {palavra_final}")
